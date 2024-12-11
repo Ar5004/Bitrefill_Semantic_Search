@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Search Engine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .search-container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        select, input[type="text"], input[type="submit"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1>HTML Search Engine</h1>
+        <form action="/search" method="post">
+            <select name="collection">
+                <option value="all">All Collections</option>
+                {% for collection in collections %}
+                <option value="{{ collection }}">{{ collection }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="query" placeholder="Enter your search query" required>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</body>
+</html>

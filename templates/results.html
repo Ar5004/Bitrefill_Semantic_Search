@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .result {
+            background-color: #f4f4f4;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .collection-tag {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .result-scores {
+            font-size: 0.8em;
+            color: #666;
+        }
+        .snippet {
+            font-style: italic;
+            color: #555;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>Query: "{{ query }}"</p>
+    <p>Collection: {{ collection }}</p>
+    
+    {% if results %}
+        {% for result in results %}
+        <div class="result">
+            <div class="result-header">
+                <span class="collection-tag">{{ result.collection }}</span>
+                <div class="result-scores">
+                    Text Match: {{ result.text_match_score|round(2) }} 
+                    | Vector Match: {{ result.vector_match_score|round(2) }}
+                </div>
+            </div>
+            <h3><a href="{{ result.url }}" target="_blank">{{ result.filename }}</a></h3>
+            <div class="snippet">
+                <strong>Description:</strong>
+                <p>{{ result.original_snippet }}</p>
+            </div>
+            <div class="snippet">
+                <strong>Keywords:</strong>
+                <p>{{ result.snippet }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="/">Back to Search</a>
+</body>
+</html>
