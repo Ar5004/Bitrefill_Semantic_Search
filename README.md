@@ -1,6 +1,6 @@
 #### Dependencies:
 - Ollama
-- Typeserve-server
+- Typesense-server
 
 #### Python dependencies:
 - bs4
