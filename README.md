@@ -15,5 +15,5 @@
 `search_app` then takes this data, add it into typeserve collections with auto-embedding, has search functions that use exact match + vectorm matched using `paraphrase-multilingual-mpnet-base-v2` then run a flask server for the UI  
 
 > [!NOTE]
-> Because of caching mechanism when deleting a Collection the system will take few minutes to allow a new collection to be created using the same name
-> When the embeds don't change, run with DELETE_CREATE_COLLECTIONS = True to avoid this inconvenience
+> Because of caching mechanism when deleting a Collection the system will take few minutes to allow a new collection to be created using the same name.  
+> When the embeds don't change, run with `DELETE_CREATE_COLLECTIONS = False` to avoid this inconvenience
